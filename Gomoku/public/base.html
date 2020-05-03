@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>socket.io front-end example</title>
+</head>
+<body>
+<script src="./socket.io.js"></script>
+<button onclick="sendMessage()">click to send message</button>
+<ol id="messages"></ol>
+<script>
+    var socket = window.io.connect(window.location.origin);
+
+    function sendMessage() {
+        socket.emit("message");
+    }
+
+
+    socket.on("receiveMessage", function (msg) {
+        console.log(msg);
+        document.getElementById("messages").innerText = msg;
+    })
+</script>
+</body>
+</html>

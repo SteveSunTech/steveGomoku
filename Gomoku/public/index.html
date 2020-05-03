@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gomoku!</title>
+    <link type="text/css" rel="stylesheet" href="./Backgammon.css"/>
+    <script src="./socket.io.js"></script>
+</head>
+<body>
+<div class="title">
+    <p id="please-ie9" style="display:none;"><b>You might need to try Chrome browser for normal use....</b></p>
+    <div style="border:3px solid #aaa;padding:0 20px;">
+        <div style="border-right:3px solid #aaa;padding-right: 20px;display:inline-block;">
+            <label>User Name：<span id="user-name"></span></label>
+            <button id="updateName-btn">Switch Name</button>
+        </div>
+        <div style="padding-left: 20px;display:inline-block;">
+            <label>Ceate a Room Number：<input type="text" id="room-id"></label>
+            <button id="enter-room">Enter the Room</button>
+            <button id="create-room">Create a Room</button>
+            <button id="leave-room">Leave the Room</button>
+        </div>
+    </div>
+</div>
+<div class="main">
+    <div class="tab-btns">
+        <span class="tab-btn btn-blue"><button id="btn-changeToChatRoom">Chatting Room</button></span><span class="tab-btn"
+                                                                                                  style="display:none"><button
+            id="btn-changeToGameRoom">Game Room</button></span><span>Room Number：<span id="room-info">Hll</span></span>
+    </div>
+    <!--Chatting Room-->
+    <div id="page-chatroom" style="border:3px solid #aaa;">
+        <ul id="chat-room">
+            <h3>System：</h3>
+            <!--<li>Chattign Information</li>-->
+        </ul>
+        <div class="chat-bar">
+            <input type="text" id="words">
+            <button id="words-btn">Speake</button>
+        </div>
+    </div>
+    <!--Gaming Room-->
+    <div id="page-gameroom" style="display:none;border:3px solid #aaa;">
+        <div>
+            <!--<label>-->
+            <!--Checkerboard size：<input id="size" type="number" value="19"/> lattice-->
+            <!--</label>-->
+            <<button style="margin-left:30px;" id="start-btn">【Generate chessboard】</button>>
+            <button style="margin-left:30px;" id="reset-btn">【Begin a New Game】</button>
+            <!--<button style="margin-left:30px;" id="backPiece-btn">【Regret chess】</button>-->
+            <button style="margin-left:30px;" id="beBlack-btn">【Switch to Black】</button>
+            <button style="margin-left:30px;" id="beWhite-btn">【Switch to White】</button>
+            <button style="margin-left:30px;" id="beWatcher-btn">【Switch to Audience】</button>
+        </div>
+        <div id="infos">
+            <div class="info">
+                <span style="font-weight: bold;">Game Situation：</span>
+                <span id="game-status">Begin to Start..</span>
+            </div>
+            <div class="info" style="display:none;">
+                <span class="infos-tips">Current chess player：</span>
+                <span id="thisOrder">【none】</span>
+            </div>
+            <div class="info" style="display:none;">
+                <span class="infos-tips">Last Winner：</span>
+                <span id="winner">【none】</span>
+            </div>
+            <div class="info">
+                <span class="infos-tips">Black：</span>
+                <span id="player-black">【none】</span>
+            </div>
+            <div class="info">
+                <span class="infos-tips">White：</span>
+                <span id="player-white">【none】</span>
+            </div>
+            <div class="info">
+                <span class="infos-tips">Audience：</span>
+                <span id="watcher">【none】</span>
+            </div>
+            <div class="info">
+                <span class="infos-tips">Room opening time：</span>
+                <span id="ctime">none</span>
+            </div>
+            <div class="info">
+                <span class="infos-tips">Checkerboard size：</span>
+                <span id="board-size">none</span>
+            </div>
+            <div class="info" style="display:none">
+                <span class="infos-tips">Victory description：</span>
+                <span id="why-win">【none】</span>
+            </div>
+            <div class="clearFixed"></div>
+        </div>
+        <div id="checkerboard">Checkerboard: not yet generated</div>
+    </div>
+</div>
+<div id="time">Loading...</div>
+<script src="./Backgammon.js"></script>
+</body>
+</html>
